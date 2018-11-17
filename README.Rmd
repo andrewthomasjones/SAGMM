@@ -1,0 +1,37 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/SAGMM)](https://cran.r-project.org/package=SAGMM)
+[![Travis-CI Build Status](https://travis-ci.org/andrewthomasjones/SAGMM.svg?branch=master)](https://travis-ci.org/andrewthomasjones/SAGMM)
+
+# SAGMM
+
+The goal of SAGMM is to ...
+
+## Installation
+
+You can install SAGMM from github with:
+
+```{r gh-installation, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("andrewthomasjones/SAGMM")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+## basic example code
+```
