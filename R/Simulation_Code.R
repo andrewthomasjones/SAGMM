@@ -1,7 +1,5 @@
 #' @import stats MixSim mvtnorm mclust lowmemtkmeans
-
-
-
+NULL
 
 #' Return GAMMA
 #' 
