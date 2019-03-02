@@ -1,3 +1,13 @@
+#'SAGMM: A package forClustering via Stochastic Approximation and Gaussian Mixture Models.
+#'
+#'The SAGMM package allows for computation 
+#'
+#'@author Andrew T. Jones and Hien D. Nguyen
+#'@references Nguyen, H. D. & Jones, A. T. (2018). Big Data-appropriate clustering via stochastic approximation and Gaussian mixture models. In M. Ahmed & A.-S. K. Pathan (Eds.), Data Analytics:Concepts, Techniques, and Applications. Boca Raton: CRC Press.
+#'@docType package
+#'@name SAGMM
+NULL
+
 #' @import stats MixSim mvtnorm mclust lowmemtkmeans
 NULL
 
