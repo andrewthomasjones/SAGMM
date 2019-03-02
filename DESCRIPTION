@@ -7,6 +7,7 @@ Author: Andrew T. Jones, Hien D. Nguyen
 Maintainer: Andrew T. Jones <andrewthomasjones@gmail.com>
 Description: SAGMM: Clustering via Stochastic Approximation and Gaussian Mixture Models.
 License: GPL-3
+Encoding: UTF-8
 Imports: Rcpp (>= 0.12.13),
     MixSim,
     mvtnorm,
@@ -15,6 +16,6 @@ Imports: Rcpp (>= 0.12.13),
     lowmemtkmeans
 LinkingTo: Rcpp,
     RcppArmadillo
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 Suggests: testthat,
     ggplot2
