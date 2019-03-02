@@ -5,15 +5,36 @@
 #'@useDynLib SAGMM
 NULL
 
+#'Mahalanobis Distance
+#'@description THIS FUNCTION DOES
+#'@param PARAM1
+#'@param PARAM2
+#'@return RETURNVAL
+#'@examples
+#'@export
 mahalanobis_HD <- function(y, mu, sigma) {
     .Call('_SAGMM_mahalanobis_HD', PACKAGE = 'SAGMM', y, mu, sigma)
 }
 
+#'Euclidean Distance
+#'@description THIS FUNCTION DOES
+#'@param PARAM1
+#'@param PARAM2
+#'@return RETURNVAL
+#'@examples
+#'@export
 norm_HD <- function(y, mu, sigma) {
     .Call('_SAGMM_norm_HD', PACKAGE = 'SAGMM', y, mu, sigma)
 }
 
-main_loop_C <- function(Number, Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions, SIGMA) {
-    .Call('_SAGMM_main_loop_C', PACKAGE = 'SAGMM', Number, Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions, SIGMA)
+#'Main Computation Loop
+#'@description THIS FUNCTION DOES
+#'@param PARAM1
+#'@param PARAM2
+#'@return RETURNVAL
+#'@examples
+#'@export
+main_loop <- function(Number, Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions, SIGMA) {
+    .Call('_SAGMM_main_loop', PACKAGE = 'SAGMM', Number, Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions, SIGMA)
 }
 

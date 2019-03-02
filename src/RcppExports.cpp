@@ -32,9 +32,9 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// main_loop_C
-Rcpp::List main_loop_C(int Number, int Groups, arma::vec PISTAR_O, arma::mat MU_O, arma::vec LAMBDA_O, arma::vec GAMMA, arma::mat& X, int Dimensions, arma::cube SIGMA);
-RcppExport SEXP _SAGMM_main_loop_C(SEXP NumberSEXP, SEXP GroupsSEXP, SEXP PISTAR_OSEXP, SEXP MU_OSEXP, SEXP LAMBDA_OSEXP, SEXP GAMMASEXP, SEXP XSEXP, SEXP DimensionsSEXP, SEXP SIGMASEXP) {
+// main_loop
+Rcpp::List main_loop(int Number, int Groups, arma::vec PISTAR_O, arma::mat MU_O, arma::vec LAMBDA_O, arma::vec GAMMA, arma::mat& X, int Dimensions, arma::cube SIGMA);
+RcppExport SEXP _SAGMM_main_loop(SEXP NumberSEXP, SEXP GroupsSEXP, SEXP PISTAR_OSEXP, SEXP MU_OSEXP, SEXP LAMBDA_OSEXP, SEXP GAMMASEXP, SEXP XSEXP, SEXP DimensionsSEXP, SEXP SIGMASEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -47,15 +47,18 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
     Rcpp::traits::input_parameter< int >::type Dimensions(DimensionsSEXP);
     Rcpp::traits::input_parameter< arma::cube >::type SIGMA(SIGMASEXP);
-    rcpp_result_gen = Rcpp::wrap(main_loop_C(Number, Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions, SIGMA));
+    rcpp_result_gen = Rcpp::wrap(main_loop(Number, Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions, SIGMA));
     return rcpp_result_gen;
 END_RCPP
 }
 
+RcppExport SEXP _SAGMM_main_loop_C(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+
 static const R_CallMethodDef CallEntries[] = {
     {"_SAGMM_mahalanobis_HD", (DL_FUNC) &_SAGMM_mahalanobis_HD, 3},
     {"_SAGMM_norm_HD", (DL_FUNC) &_SAGMM_norm_HD, 3},
-    {"_SAGMM_main_loop_C", (DL_FUNC) &_SAGMM_main_loop_C, 9},
+    {"_SAGMM_main_loop", (DL_FUNC) &_SAGMM_main_loop, 9},
+    {"_SAGMM_main_loop_C",    (DL_FUNC) &_SAGMM_main_loop_C,    9},
     {NULL, NULL, 0}
 };
 

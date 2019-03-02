@@ -36,7 +36,7 @@ test_that("Test SAGMMFit", {
     result<-SAGMMFit(sims$X, sims$Y, sims$MS)
     
     # #types correct
-    # expect_is(result, "list")
+    expect_is(result, "list")
     # expect_is(result[[1]], "numeric")
     # expect_is(result[[2]], "numeric")
     # expect_is(result[[3]], "numeric")
