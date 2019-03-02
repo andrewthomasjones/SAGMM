@@ -3,10 +3,10 @@ NULL
 
 #' Return GAMMA
 #' 
-#' @description  Gain factors
+#' @description  Generate a series of gain factors.
 #' @param Number Number
 #' @param BURNIN BURNIN.
-#' @return GAMMA
+#' @return GAMMA, a vector of gain factors
 #'@export
 gainFactors <- function(Number, BURNIN) {
     # Make a sequence of gain factors
@@ -38,63 +38,6 @@ generateSimData<-function(Groups=5, Dimensions=5, Number=10^4){
     return(list(X=X, Y=Y, MS=MS))
 }
 
-main_loop_R<-function(Number,Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions, SIGMA){
-    
-    LogLike <- 0
-    MU <- MU_O
-    LAMBDA <- LAMBDA_O
-    PISTAR <- PISTAR_O
-    
-    ### Main loop
-    for (ii in 1:Number) {
-        ### PI
-        PI <- exp(PISTAR_O)/sum(exp(PISTAR_O)) # Compute Pi from Pistar olds
-        
-        ### Tau # this is the component/overall_distribution that goes at the start of each gradient component
-        Tau <- c()
-        for (gg in 1:Groups) {
-            Tau[gg] <- PI[gg]*mvtnorm::dmvnorm(X[ii,],MU_O[gg,],diag(Dimensions)*LAMBDA_O[gg]^2/2)
-        }
-        Tau <- Tau/sum(Tau) 
-        
-        ### Mean
-        for (gg in 1:Groups) {
-            MU[gg,] <- MU_O[gg,] + GAMMA[ii]*Tau[gg]*2/LAMBDA_O[gg]^2*(X[ii,]-MU_O[gg,])
-        }
-        
-        LAMBDASTAR <- log(LAMBDA)
-        # Sigma
-        for (gg in 1:Groups) {
-            LAMBDASTAR[gg] <- log(LAMBDA_O[gg]) - GAMMA[ii]*Tau[gg]*(Dimensions-2/LAMBDA_O[gg]^2*t((X[ii,]-MU_O[gg,]))%*%(X[ii,]-MU_O[gg,]))
-        }
-        LAMBDA <- exp(LAMBDASTAR)
-        for (gg in 1:Groups) {
-            SIGMA[[gg]] <- diag(Dimensions)*LAMBDA[gg]^2/2
-        }
-        
-        # ### Pi
-        for (gg in 1:(Groups-1)) {
-            PISTAR[gg] <- PISTAR_O[gg] + GAMMA[ii]*Tau[gg]*(2 - exp(PISTAR_O[gg])/sum(exp(PISTAR_O)))
-        }
-        
-        Comps <- c()
-        for (gg in 1:Groups) {
-            Comps[gg] <- log(PISTAR[gg]/sum(PISTAR)) + dmvnorm(X[ii,],MU[gg,],SIGMA[[gg]],log=T)
-        }
-        LogLike <- LogLike + max(Comps) + log(sum(exp(Comps-max(Comps))))
-        
-        
-        ### Old stuff
-        LAMBDA_O <- LAMBDA # Put old stuff back
-        MU_O <- MU
-        PISTAR_O <- PISTAR
-        
-        #message(c(ii))
-    }
-    
-    
-    return(list(PI=exp(PISTAR)/sum(exp(PISTAR)), MU=MU, LAMBDA=LAMBDA))
-}
 
 
 #' Clustering via Stochastic Approximation and Gaussian Mixture Models
@@ -106,15 +49,14 @@ main_loop_R<-function(Number,Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensi
 #' @param BURNIN Ratio of observations to use as a burn in before algorithm begins.
 #' @param Groups Number of mixture components.
 #' @param kstart number of kmeans starts to initialise.
-#' @param mode for testing "C" uses C++, "R" uses R code.
 #' @param plot If TRUE generates a plot of the clustering.
-#' @return List of results:
+#' @return List of results
 #' @examples
 #' sims<-generateSimData(Groups=10, Dimensions=10, Number=10^4)
 #' res1<-SAGMMFit(sims$X, sims$Y, sims$MS, mode="C")
 #'
 #'@export
-SAGMMFit<-function(X, Y, MS,  BURNIN=5, Groups= 5, kstart=10, mode = "C", plot=F){
+SAGMMFit<-function(X, Y, MS,  BURNIN=5, Groups= 5, kstart=10, plot=F){
 
     Number<-nrow(X) # N observations
     Dimensions <-ncol(X) #dim of data
@@ -148,42 +90,18 @@ SAGMMFit<-function(X, Y, MS,  BURNIN=5, Groups= 5, kstart=10, mode = "C", plot=F
   
    
     #MAIN ACTION HERE
-    if(mode=="C"){
-        results<-main_loop_C(Number,Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions, SIGMA_C)
-        
-        TauMAT<-results$Tau
-        PI <-results$PI
-        MU <-results$MU
-        
-        SIGMA <-list()
-        for (gg in 1:Groups) {
-            SIGMA[[gg]] <- diag(Dimensions)*results$LAMBDA[gg]^2/2
-        }
+    results<-main_loop(Number,Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions, SIGMA_C)
+    
+    TauMAT<-results$Tau
+    PI <-results$PI
+    MU <-results$MU
+    
+    SIGMA <-list()
+    for (gg in 1:Groups) {
+        SIGMA[[gg]] <- diag(Dimensions)*results$LAMBDA[gg]^2/2
     }
     
-    if(mode=="R"){
-        results<-main_loop_R(Number,as.integer(Groups), PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions, SIGMA)
-    
-    
-        PI <-results$PI
-        MU <-results$MU
-        
-        SIGMA <-list()
-        for (gg in 1:Groups) {
-            SIGMA[[gg]] <- diag(Dimensions)*results$LAMBDA[gg]^2/2
-        }
-    
-        ### Bunch of results stuff
-        TauMAT <- matrix(NA,Number,Groups)
-        for (ii in 1:Number) {
-            Tau <- c()
-            for (gg in 1:Groups) {
-                Tau[gg] <- log(PI[gg]) + dmvnorm(X[ii,],MU[gg,],SIGMA[[gg]]/2,log=T)
-            }
-            TauMAT[ii,] <- Tau
-        }
-    }
-    
+  
     Cluster <- apply(TauMAT,1,which.max)
     if(plot){
         p1<-plot(as.data.frame(X),col=Cluster,pch=Y)
