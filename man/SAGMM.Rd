@@ -4,7 +4,7 @@
 \name{SAGMM}
 \alias{SAGMM}
 \alias{SAGMM-package}
-\title{SAGMM: A package forClustering via Stochastic Approximation and Gaussian Mixture Models.}
+\title{SAGMM: A package for Clustering via Stochastic Approximation and Gaussian Mixture Models.}
 \description{
 The SAGMM package allows for computation
 }

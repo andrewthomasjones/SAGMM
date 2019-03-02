@@ -14,11 +14,11 @@ Rcpp::NumericVector export_vec(arma::vec y)
 }
 
 //'Mahalanobis Distance
-//'@description THIS FUNCTION DOES
-//'@param PARAM1
-//'@param PARAM2
-//'@return RETURNVAL
-//'@examples
+//'@description Calculates Mahalanobis distance between y and mu, scaled by sigma.
+//'@param y vector of length n
+//'@param mu vector of length n
+//'@param sigma nxn covariance matrix
+//'@return distance (scalar)
 //'@export
 // [[Rcpp::export]]
 double mahalanobis_HD(arma::rowvec y, arma::rowvec mu, arma::mat sigma)
@@ -31,11 +31,11 @@ double mahalanobis_HD(arma::rowvec y, arma::rowvec mu, arma::mat sigma)
 }
 
 //'Euclidean Distance
-//'@description THIS FUNCTION DOES
-//'@param PARAM1
-//'@param PARAM2
-//'@return RETURNVAL
-//'@examples
+//'@description Calculates Euclidean distance between y and mu, scaled by sigma.
+//'@param y vector of length n
+//'@param mu vector of length n
+//'@param sigma nxn covariance matrix
+//'@return distance (scalar)
 //'@export
 // [[Rcpp::export]]
 double norm_HD(arma::rowvec y, arma::rowvec mu, arma::mat sigma)
@@ -50,12 +50,6 @@ double norm_HD(arma::rowvec y, arma::rowvec mu, arma::mat sigma)
 }
 
 //'Main Computation Loop
-//'@description THIS FUNCTION DOES
-//'@param PARAM1
-//'@param PARAM2
-//'@return RETURNVAL
-//'@examples
-//'@export
 // [[Rcpp::export]]
 Rcpp::List main_loop(int Number, int Groups, arma::vec PISTAR_O, arma::mat MU_O, 
                        arma::vec LAMBDA_O, arma::vec GAMMA, arma::mat& X,

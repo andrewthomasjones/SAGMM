@@ -1,4 +1,4 @@
-#'SAGMM: A package forClustering via Stochastic Approximation and Gaussian Mixture Models.
+#'SAGMM: A package for Clustering via Stochastic Approximation and Gaussian Mixture Models.
 #'
 #'The SAGMM package allows for computation 
 #'
@@ -14,10 +14,10 @@ NULL
 #' Return GAMMA
 #' 
 #' @description  Generate a series of gain factors.
-#' @param Number Number
-#' @param BURNIN BURNIN.
+#' @param Number Number of values required.
+#' @param BURNIN Number of 'burnin' values at the beginning of sequence
 #' @return GAMMA, a vector of gain factors
-#'@export
+#' @export
 gainFactors <- function(Number, BURNIN) {
     # Make a sequence of gain factors
     GAMMA <- c(rep(log(Number)/(Number),round(Number/BURNIN)),
@@ -60,7 +60,19 @@ generateSimData<-function(Groups=5, Dimensions=5, Number=10^4){
 #' @param Groups Number of mixture components.
 #' @param kstart number of kmeans starts to initialise.
 #' @param plot If TRUE generates a plot of the clustering.
-#' @return List of results
+#'@return A list containing
+#'\item{Cluster}{The clustering of each observation.}
+#'\item{plot}{A plot of the clustering (if requested).}
+#'\item{l2}{Lambda^2}
+#'\item{S}{}
+#'\item{ARI1}{}
+#'\item{ARI2}{}
+#'\item{KM}{K-means clustering of the data.}
+#'\item{ARI3}{}
+#'\item{pi}{The cluster proportions}
+#'\item{MS}{MixSim Simulation object inputed to function.}
+#'\item{tau}{Tau matrix.}
+#'\item{fit}{Output from C++ loop.}
 #' @examples
 #' sims<-generateSimData(Groups=10, Dimensions=10, Number=10^4)
 #' res1<-SAGMMFit(sims$X, sims$Y, sims$MS)

@@ -7,9 +7,9 @@
 gainFactors(Number, BURNIN)
 }
 \arguments{
-\item{Number}{Number}
+\item{Number}{Number of values required.}
 
-\item{BURNIN}{BURNIN.}
+\item{BURNIN}{Number of 'burnin' values at the beginning of sequence}
 }
 \value{
 GAMMA, a vector of gain factors
