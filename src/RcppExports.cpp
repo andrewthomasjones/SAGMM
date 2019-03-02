@@ -52,13 +52,10 @@ BEGIN_RCPP
 END_RCPP
 }
 
-RcppExport SEXP _SAGMM_main_loop_C(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-
 static const R_CallMethodDef CallEntries[] = {
     {"_SAGMM_mahalanobis_HD", (DL_FUNC) &_SAGMM_mahalanobis_HD, 3},
     {"_SAGMM_norm_HD", (DL_FUNC) &_SAGMM_norm_HD, 3},
     {"_SAGMM_main_loop", (DL_FUNC) &_SAGMM_main_loop, 9},
-    {"_SAGMM_main_loop_C",    (DL_FUNC) &_SAGMM_main_loop_C,    9},
     {NULL, NULL, 0}
 };
 
