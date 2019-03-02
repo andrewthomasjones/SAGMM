@@ -63,7 +63,7 @@ generateSimData<-function(Groups=5, Dimensions=5, Number=10^4){
 #' @return List of results
 #' @examples
 #' sims<-generateSimData(Groups=10, Dimensions=10, Number=10^4)
-#' res1<-SAGMMFit(sims$X, sims$Y, sims$MS, mode="C")
+#' res1<-SAGMMFit(sims$X, sims$Y, sims$MS)
 #'
 #'@export
 SAGMMFit<-function(X, Y, MS,  BURNIN=5, Groups= 5, kstart=10, plot=F){
@@ -131,18 +131,3 @@ SAGMMFit<-function(X, Y, MS,  BURNIN=5, Groups= 5, kstart=10, plot=F){
     
     return(retList)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
