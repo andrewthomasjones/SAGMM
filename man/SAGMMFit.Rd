@@ -4,14 +4,17 @@
 \alias{SAGMMFit}
 \title{Clustering via Stochastic Approximation and Gaussian Mixture Models}
 \usage{
-SAGMMFit(X, Y, BURNIN = 5, Groups = 5, kstart = 10, plot = F)
+SAGMMFit(X, Y = NULL, BURNIN = 5, Groups = 5, kstart = 10,
+  plot = FALSE)
 }
 \arguments{
 \item{X}{numeric maxtrix of the data.}
 
+\item{Y}{Group membership (if known). Where groups are integers in 1:Groups. If provided Groups can}
+
 \item{BURNIN}{Ratio of observations to use as a burn in before algorithm begins.}
 
-\item{Groups}{Number of mixture components.}
+\item{Groups}{Number of mixture components. If Y is provided, and groups is not then is overridden by Y.}
 
 \item{kstart}{number of kmeans starts to initialise.}
 
@@ -36,5 +39,5 @@ Fit a GMM with SA.
 \examples{
 sims<-generateSimData(Groups=10, Dimensions=10, Number=10^4)
 res1<-SAGMMFit(sims$X, sims$Y)
-
+res2<-SAGMMFit(sims$X, Groups=5)
 }

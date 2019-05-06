@@ -55,8 +55,9 @@ generateSimData<-function(Groups=5, Dimensions=5, Number=10^4){
 #' 
 #' @description  Fit a GMM with SA. 
 #' @param X numeric maxtrix of the data.
+#' @param Y Group membership (if known). Where groups are integers in 1:Groups. If provided Groups can 
 #' @param BURNIN Ratio of observations to use as a burn in before algorithm begins.
-#' @param Groups Number of mixture components.
+#' @param Groups Number of mixture components. If Y is provided, and groups is not then is overridden by Y.
 #' @param kstart number of kmeans starts to initialise.
 #' @param plot If TRUE generates a plot of the clustering.
 #'@return A list containing
@@ -73,12 +74,28 @@ generateSimData<-function(Groups=5, Dimensions=5, Number=10^4){
 #' @examples
 #' sims<-generateSimData(Groups=10, Dimensions=10, Number=10^4)
 #' res1<-SAGMMFit(sims$X, sims$Y)
-#'
+#' res2<-SAGMMFit(sims$X, Groups=5)
 #'@export
-SAGMMFit<-function(X, Y, BURNIN=5, Groups= 5, kstart=10, plot=F){
+SAGMMFit<-function(X, Y=NULL, BURNIN=5, Groups=5, kstart=10, plot=FALSE){
 
     Number<-nrow(X) # N observations
     Dimensions <-ncol(X) #dim of data
+    
+    if(length(Y)>0){
+      if(Groups==0 |class(Groups)!="numeric"){
+        stop("At least one of Groups or Y must be provided")
+      }
+      if(length(Y)!=nrow(X)){
+        stop("Y length is not equal number of rows of X.")
+      }
+    }else{
+      if(Groups==0 |class(Groups)!="numeric"){
+        Groups <- max(Y)
+      }
+    }
+    
+   
+    
     
     ### Initialize Algorithm
     KM <- suppressWarnings(stats::kmeans(X[1:round(Number/BURNIN),],Groups,nstart=kstart)) # Use K means on burnin sample
@@ -122,19 +139,30 @@ SAGMMFit<-function(X, Y, BURNIN=5, Groups= 5, kstart=10, plot=F){
     
   
     Cluster <- apply(TauMAT,1,which.max)
-    if(plot){
+    if(plot &(length(Y)>0)){
         p1<-plot(as.data.frame(X),col=Cluster,pch=Y)
     }else{
+      if(plot){
+        p1<-plot(as.data.frame(X),col=Cluster)  
+      }else{
         p1<-NA
+      }
+        
     }
     
     l2<-LAMBDA^2
-    ARI1<-adjustedRandIndex(lowmemtkmeans::nearest_cluster(X,KM$centers),Y)
-    ARI2<-adjustedRandIndex(Cluster,Y)
-    KM <- kmeans(X,Groups,nstart=10)
-    ARI3<-adjustedRandIndex(KM$cluster,Y)
     pi <- sort(PI)
+    KM <- kmeans(X,Groups,nstart=10)
     
+    if(length(Y)>0){
+      ARI1<-adjustedRandIndex(lowmemtkmeans::nearest_cluster(X,KM$centers),Y)
+      ARI2<-adjustedRandIndex(Cluster,Y)
+      ARI3<-adjustedRandIndex(KM$cluster,Y)
+    }else{
+      ARI1<-NA
+      ARI2<-NA
+      ARI3<-NA
+    }
     retList <-list(Cluster=Cluster, plot=p1, l2=l2, ARI1 = ARI1,ARI2 = ARI2, KM=KM, ARI3=ARI3, pi=pi, tau=TauMAT, fit=results)
     
     return(retList)
