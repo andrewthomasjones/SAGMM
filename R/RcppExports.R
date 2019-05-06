@@ -6,33 +6,45 @@
 NULL
 
 #'Mahalanobis Distance
-#'@description THIS FUNCTION DOES
-#'@param PARAM1
-#'@param PARAM2
-#'@return RETURNVAL
-#'@examples
+#'@description Calculates Mahalanobis distance between y and mu, scaled by sigma.
+#'@param y vector of length n
+#'@param mu vector of length n
+#'@param sigma nxn covariance matrix
+#'@return distance (scalar)
 #'@export
 mahalanobis_HD <- function(y, mu, sigma) {
     .Call('_SAGMM_mahalanobis_HD', PACKAGE = 'SAGMM', y, mu, sigma)
 }
 
 #'Euclidean Distance
-#'@description THIS FUNCTION DOES
-#'@param PARAM1
-#'@param PARAM2
-#'@return RETURNVAL
-#'@examples
+#'@description Calculates Euclidean distance between y and mu, scaled by sigma.
+#'@param y vector of length n
+#'@param mu vector of length n
+#'@param sigma nxn covariance matrix
+#'@return distance (scalar)
 #'@export
 norm_HD <- function(y, mu, sigma) {
     .Call('_SAGMM_norm_HD', PACKAGE = 'SAGMM', y, mu, sigma)
 }
 
 #'Main Computation Loop
-#'@description THIS FUNCTION DOES
-#'@param PARAM1
-#'@param PARAM2
-#'@return RETURNVAL
-#'@examples
+#'@description Performs primary compuation process
+#'@param Number int ???
+#'@param Groups int
+#'@param PISTAR_O  vector
+#'@param MU_O matrix
+#'@param LAMBDA_O  vector
+#'@param GAMMA vector
+#'@param X matrix
+#'@param Dimensions int
+#'@param SIGMA nxnx? cube
+#'@return Results List
+#'PI -
+#'MU -
+#'LAMBDA -
+#'Comps - 
+#'LogLike - 
+#'TauMat -
 #'@export
 main_loop <- function(Number, Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions, SIGMA) {
     .Call('_SAGMM_main_loop', PACKAGE = 'SAGMM', Number, Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions, SIGMA)

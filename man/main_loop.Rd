@@ -7,9 +7,34 @@
 main_loop(Number, Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions,
   SIGMA)
 }
+\arguments{
+\item{Number}{int ???}
+
+\item{Groups}{int}
+
+\item{PISTAR_O}{vector}
+
+\item{MU_O}{matrix}
+
+\item{LAMBDA_O}{vector}
+
+\item{GAMMA}{vector}
+
+\item{X}{matrix}
+
+\item{Dimensions}{int}
+
+\item{SIGMA}{nxnx? cube}
+}
 \value{
-RETURNVAL
+Results List
+PI -
+MU -
+LAMBDA -
+Comps - 
+LogLike - 
+TauMat -
 }
 \description{
-THIS FUNCTION DOES
+Performs primary compuation process
 }

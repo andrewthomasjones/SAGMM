@@ -50,6 +50,24 @@ double norm_HD(arma::rowvec y, arma::rowvec mu, arma::mat sigma)
 }
 
 //'Main Computation Loop
+//'@description Performs primary compuation process
+//'@param Number int ???
+//'@param Groups int
+//'@param PISTAR_O  vector
+//'@param MU_O matrix
+//'@param LAMBDA_O  vector
+//'@param GAMMA vector
+//'@param X matrix
+//'@param Dimensions int
+//'@param SIGMA nxnx? cube
+//'@return Results List
+//'PI -
+//'MU -
+//'LAMBDA -
+//'Comps - 
+//'LogLike - 
+//'TauMat -
+//'@export
 // [[Rcpp::export]]
 Rcpp::List main_loop(int Number, int Groups, arma::vec PISTAR_O, arma::mat MU_O, 
                        arma::vec LAMBDA_O, arma::vec GAMMA, arma::mat& X,
