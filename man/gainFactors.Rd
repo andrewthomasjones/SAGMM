@@ -17,3 +17,6 @@ GAMMA, a vector of gain factors
 \description{
 Generate a series of gain factors.
 }
+\examples{
+g<-gainFactors(10^4, 2*10^3)
+}

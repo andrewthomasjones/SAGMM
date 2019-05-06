@@ -17,7 +17,7 @@ NULL
 #' @param Number Number of values required.
 #' @param BURNIN Number of 'burnin' values at the beginning of sequence
 #' @return GAMMA, a vector of gain factors
-#' @example
+#' @examples
 #' g<-gainFactors(10^4, 2*10^3)
 #' @export
 gainFactors <- function(Number, BURNIN) {
