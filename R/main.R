@@ -17,6 +17,8 @@ NULL
 #' @param Number Number of values required.
 #' @param BURNIN Number of 'burnin' values at the beginning of sequence
 #' @return GAMMA, a vector of gain factors
+#' @example
+#' g<-gainFactors(10^4, 2*10^3)
 #' @export
 gainFactors <- function(Number, BURNIN) {
     # Make a sequence of gain factors
@@ -49,13 +51,10 @@ generateSimData<-function(Groups=5, Dimensions=5, Number=10^4){
 }
 
 
-
 #' Clustering via Stochastic Approximation and Gaussian Mixture Models
 #' 
 #' @description  Fit a GMM with SA. 
 #' @param X numeric maxtrix of the data.
-#' @param Y True classes.
-#' @param MS MixSim Simulation object.
 #' @param BURNIN Ratio of observations to use as a burn in before algorithm begins.
 #' @param Groups Number of mixture components.
 #' @param kstart number of kmeans starts to initialise.
@@ -64,21 +63,19 @@ generateSimData<-function(Groups=5, Dimensions=5, Number=10^4){
 #'\item{Cluster}{The clustering of each observation.}
 #'\item{plot}{A plot of the clustering (if requested).}
 #'\item{l2}{Lambda^2}
-#'\item{S}{}
 #'\item{ARI1}{}
 #'\item{ARI2}{}
 #'\item{KM}{K-means clustering of the data.}
 #'\item{ARI3}{}
 #'\item{pi}{The cluster proportions}
-#'\item{MS}{MixSim Simulation object inputed to function.}
 #'\item{tau}{Tau matrix.}
 #'\item{fit}{Output from C++ loop.}
 #' @examples
 #' sims<-generateSimData(Groups=10, Dimensions=10, Number=10^4)
-#' res1<-SAGMMFit(sims$X, sims$Y, sims$MS)
+#' res1<-SAGMMFit(sims$X, sims$Y)
 #'
 #'@export
-SAGMMFit<-function(X, Y, MS,  BURNIN=5, Groups= 5, kstart=10, plot=F){
+SAGMMFit<-function(X, Y, BURNIN=5, Groups= 5, kstart=10, plot=F){
 
     Number<-nrow(X) # N observations
     Dimensions <-ncol(X) #dim of data
@@ -132,14 +129,13 @@ SAGMMFit<-function(X, Y, MS,  BURNIN=5, Groups= 5, kstart=10, plot=F){
     }
     
     l2<-LAMBDA^2
-    S<-MS$S
     ARI1<-adjustedRandIndex(lowmemtkmeans::nearest_cluster(X,KM$centers),Y)
     ARI2<-adjustedRandIndex(Cluster,Y)
     KM <- kmeans(X,Groups,nstart=10)
     ARI3<-adjustedRandIndex(KM$cluster,Y)
     pi <- sort(PI)
     
-    retList <-list(Cluster=Cluster, plot=p1, l2=l2, S=S, ARI1 = ARI1,ARI2 = ARI2, KM=KM, ARI3=ARI3, pi=pi, MS=MS, tau=TauMAT, fit=results)
+    retList <-list(Cluster=Cluster, plot=p1, l2=l2, ARI1 = ARI1,ARI2 = ARI2, KM=KM, ARI3=ARI3, pi=pi, tau=TauMAT, fit=results)
     
     return(retList)
 }
