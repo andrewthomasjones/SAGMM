@@ -35,8 +35,9 @@ norm_HD <- function(y, mu, sigma) {
 #'@param Groups Number of groups.
 #'@param MU_O Matrix of group means
 #'@param LAMBDA_O vector of lambda values. See Reference.
+#'@param PISTAR_O cube of pi*0 values. See Reference. 
+#'@param SIGMA cube of Sigma values. See Reference.
 #'@param GAMMA vector of gamma values.See Reference. 
-#'@param PISTAR_0 cube of pi*0 values. See Reference. 
 #'@return Results List
 #'PI - Group proportions.
 #'MU - Group means. 
@@ -46,7 +47,7 @@ norm_HD <- function(y, mu, sigma) {
 #'@author Andrew T. Jones and Hien D. Nguyen
 #'@references Nguyen & Jones (2018). Big Data-Appropriate Clustering via Stochastic Approximation and Gaussian Mixture Models. In Data Analytics (pp. 79-96). CRC Press.
 #'@export
-main_loop <- function(Number, Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions, SIGMA) {
-    .Call('_SAGMM_main_loop', PACKAGE = 'SAGMM', Number, Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions, SIGMA)
+main_loop <- function(X, Dimensions, Number, Groups, MU_O, LAMBDA_O, PISTAR_O, SIGMA, GAMMA) {
+    .Call('_SAGMM_main_loop', PACKAGE = 'SAGMM', X, Dimensions, Number, Groups, MU_O, LAMBDA_O, PISTAR_O, SIGMA, GAMMA)
 }
 

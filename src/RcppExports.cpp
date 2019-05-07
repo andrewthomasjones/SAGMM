@@ -33,21 +33,21 @@ BEGIN_RCPP
 END_RCPP
 }
 // main_loop
-Rcpp::List main_loop(int Number, int Groups, arma::vec PISTAR_O, arma::mat MU_O, arma::vec LAMBDA_O, arma::vec GAMMA, arma::mat& X, int Dimensions, arma::cube SIGMA);
-RcppExport SEXP _SAGMM_main_loop(SEXP NumberSEXP, SEXP GroupsSEXP, SEXP PISTAR_OSEXP, SEXP MU_OSEXP, SEXP LAMBDA_OSEXP, SEXP GAMMASEXP, SEXP XSEXP, SEXP DimensionsSEXP, SEXP SIGMASEXP) {
+Rcpp::List main_loop(arma::mat& X, int Dimensions, int Number, int Groups, arma::mat MU_O, arma::vec LAMBDA_O, arma::vec PISTAR_O, arma::cube SIGMA, arma::vec GAMMA);
+RcppExport SEXP _SAGMM_main_loop(SEXP XSEXP, SEXP DimensionsSEXP, SEXP NumberSEXP, SEXP GroupsSEXP, SEXP MU_OSEXP, SEXP LAMBDA_OSEXP, SEXP PISTAR_OSEXP, SEXP SIGMASEXP, SEXP GAMMASEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< int >::type Number(NumberSEXP);
-    Rcpp::traits::input_parameter< int >::type Groups(GroupsSEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type PISTAR_O(PISTAR_OSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type MU_O(MU_OSEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type LAMBDA_O(LAMBDA_OSEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type GAMMA(GAMMASEXP);
     Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
     Rcpp::traits::input_parameter< int >::type Dimensions(DimensionsSEXP);
+    Rcpp::traits::input_parameter< int >::type Number(NumberSEXP);
+    Rcpp::traits::input_parameter< int >::type Groups(GroupsSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type MU_O(MU_OSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type LAMBDA_O(LAMBDA_OSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type PISTAR_O(PISTAR_OSEXP);
     Rcpp::traits::input_parameter< arma::cube >::type SIGMA(SIGMASEXP);
-    rcpp_result_gen = Rcpp::wrap(main_loop(Number, Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions, SIGMA));
+    Rcpp::traits::input_parameter< arma::vec >::type GAMMA(GAMMASEXP);
+    rcpp_result_gen = Rcpp::wrap(main_loop(X, Dimensions, Number, Groups, MU_O, LAMBDA_O, PISTAR_O, SIGMA, GAMMA));
     return rcpp_result_gen;
 END_RCPP
 }

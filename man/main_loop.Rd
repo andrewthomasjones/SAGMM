@@ -4,10 +4,14 @@
 \alias{main_loop}
 \title{Main Computation Loop}
 \usage{
-main_loop(Number, Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions,
-  SIGMA)
+main_loop(X, Dimensions, Number, Groups, MU_O, LAMBDA_O, PISTAR_O, SIGMA,
+  GAMMA)
 }
 \arguments{
+\item{X}{Matrix of Observations}
+
+\item{Dimensions}{Dimension of observations.}
+
 \item{Number}{Number of observations.}
 
 \item{Groups}{Number of groups.}
@@ -16,13 +20,11 @@ main_loop(Number, Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions,
 
 \item{LAMBDA_O}{vector of lambda values. See Reference.}
 
+\item{PISTAR_O}{cube of pi*0 values. See Reference.}
+
+\item{SIGMA}{cube of Sigma values. See Reference.}
+
 \item{GAMMA}{vector of gamma values.See Reference.}
-
-\item{X}{Matrix of Observations}
-
-\item{Dimensions}{Dimension of observations.}
-
-\item{PISTAR_0}{cube of pi*0 values. See Reference.}
 }
 \value{
 Results List
