@@ -75,16 +75,10 @@ test_that("Test SAGMMFit", {
 
 test_that("Test SAGMMFit Plots", {
     sims<-generateSimData(ngroups=5, Dimensions=2, Number=10^2)
-    result1<-SAGMMFit(sims$X, sims$Y, plot=TRUE)
-    result2<-SAGMMFit(sims$X, ngroups=4, plot=TRUE)
+    result<-SAGMMFit(sims$X, ngroups=4, plot=TRUE)
     
-    #dims
-    expect_is(result1, "list")
-    expect_equal(length(result1), 10)
-    expect_is(result2, "list")
-    expect_equal(length(result2), 10)
-    
-    expect_is(result1[[2]], "NULL")
-    expect_is(result2[[2]], "NULL")
+    expect_is(result, "list")
+    expect_equal(length(result), 10)
+    expect_is(result[[2]], "NULL")
 
 })
