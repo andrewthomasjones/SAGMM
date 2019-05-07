@@ -50,3 +50,15 @@ sims<-generateSimData(ngroups=5, Dimensions=2, Number=10^3)
 #plot
 res2<-SAGMMFit(sims$X, sims$Y, plot=T)
 ```
+
+## Authorship statement
+
+The `SAGMM` package is co-authored by [Andrew T. Jones][] and  [Hien D. Nguyen][]. 
+
+[Andrew T. Jones]: https://github.com/andrewthomasjones
+[Hien D. Nguyen]: https://github.com/hiendn
+
+## Bug reporting and contributions
+
+Thank you for your interest in `SAGMM`. If you happen to find any bugs in the program, then please report them on the Issues page (https://github.com/andrewthomasjones/SAGMM/issues). Support can also be sought on this page. Furthermore, if you would like to make a contribution to the software, then please forward a pull request to the owner of the repository.
+

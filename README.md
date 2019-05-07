@@ -33,12 +33,11 @@ sims<-generateSimData(ngroups=10, Dimensions=10, Number=10^5)
 #time fit
 ptm <- proc.time()
 res1<-SAGMMFit(sims$X, ngroups=10)
-#> Warning: Quick-TRANSfer stage steps exceeded maximum (= 5000000)
-
+#> Warning: did not converge in 10 iterations
 #> Warning: Quick-TRANSfer stage steps exceeded maximum (= 5000000)
 proc.time()-ptm #should be under 15 seconds for 10 x 10^5 dataset on an ordinary laptop
 #>    user  system elapsed 
-#>  14.658   0.263  16.700
+#>  15.623   0.338  19.157
 ```
 
 ``` r
@@ -50,3 +49,18 @@ res2<-SAGMMFit(sims$X, sims$Y, plot=T)
 ```
 
 ![](README-example2-1.png)<!-- -->
+
+## Authorship statement
+
+The `SAGMM` package is co-authored by [Andrew T.
+Jones](https://github.com/andrewthomasjones) and [Hien D.
+Nguyen](https://github.com/hiendn).
+
+## Bug reporting and contributions
+
+Thank you for your interest in `SAGMM`. If you happen to find any bugs
+in the program, then please report them on the Issues page
+(<https://github.com/andrewthomasjones/SAGMM/issues>). Support can also
+be sought on this page. Furthermore, if you would like to make a
+contribution to the software, then please forward a pull request to the
+owner of the repository.
