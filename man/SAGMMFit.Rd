@@ -25,9 +25,9 @@ A list containing
 \item{Cluster}{The clustering of each observation.}
 \item{plot}{A plot of the clustering (if requested).}
 \item{l2}{Estimate of Lambda^2}
-\item{ARI1}{Adjusted Rand Index 1}
-\item{ARI2}{Adjusted Rand Index 2}
-\item{ARI3}{Adjusted Rand Index 3}
+\item{ARI1}{Adjusted Rand Index 1 - using k-means}
+\item{ARI2}{Adjusted Rand Index 2 - using GMM Clusters}
+\item{ARI3}{Adjusted Rand Index 3 - using intialiation k-means}
 \item{KM}{Initial K-means clustering of the data.}
 \item{pi}{The cluster proportions (vector of length ngroups)}
 \item{tau}{tau matrix of conditional probabilities.}

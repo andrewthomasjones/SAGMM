@@ -3,6 +3,6 @@
 ^\.travis\.yml$
 ^README\.Rmd$
 ^README\.md$
-^README\.png$
+README-example2-1.png
 cran-comments.md
 ^CRAN-RELEASE$
