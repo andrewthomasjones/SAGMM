@@ -35,7 +35,7 @@ LogLike - Logliklihood value.
 TauMat - Conditional probabilities.
 }
 \description{
-Performs primary compuation process. See Reference.
+Performs primary computation process. See Reference.
 }
 \references{
 Nguyen & Jones (2018). Big Data-Appropriate Clustering via Stochastic Approximation and Gaussian Mixture Models. In Data Analytics (pp. 79-96). CRC Press.

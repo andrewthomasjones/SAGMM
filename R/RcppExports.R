@@ -28,7 +28,7 @@ norm_HD <- function(y, mu, sigma) {
 }
 
 #'Main Computation Loop
-#'@description Performs primary compuation process. See Reference.
+#'@description Performs primary computation process. See Reference.
 #'@param X Matrix of Observations
 #'@param Dimensions Dimension of observations.
 #'@param Number Number of observations.
