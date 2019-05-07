@@ -36,7 +36,7 @@ norm_HD <- function(y, mu, sigma) {
 #'@param MU_O Matrix of group means
 #'@param LAMBDA_O vector of lambda values. See Reference.
 #'@param GAMMA vector of gamma values.See Reference. 
-#'@param PISTAR cube of pi* values. See Reference. 
+#'@param PISTAR_0 cube of pi*0 values. See Reference. 
 #'@return Results List
 #'PI - Group proportions.
 #'MU - Group means. 

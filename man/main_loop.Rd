@@ -22,7 +22,7 @@ main_loop(Number, Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions,
 
 \item{Dimensions}{Dimension of observations.}
 
-\item{PISTAR}{cube of pi* values. See Reference.}
+\item{PISTAR_0}{cube of pi*0 values. See Reference.}
 }
 \value{
 Results List
