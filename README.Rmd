@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 # SAGMM
 
-The goal of SAGMM is to ...
+The SAGMM package allows for computation of gaussian mixture models using stochastic approximation to increase efficiency with large data sets. The primary function \code{SAGMMFit} allows this to be performed in a relative flexible manner.
 
 ## Installation
 
@@ -33,5 +33,20 @@ devtools::install_github("andrewthomasjones/SAGMM")
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
-## basic example code
+library(SAGMM)
+#generate sample data
+sims<-generateSimData(ngroups=10, Dimensions=10, Number=10^5)
+
+#time fit
+ptm <- proc.time()
+res1<-SAGMMFit(sims$X, ngroups=10)
+proc.time()-ptm #should be under 15 seconds for 10 x 10^5 dataset on an ordinary laptop
+```
+
+```{r example2}
+library(SAGMM)
+#generate sample data
+sims<-generateSimData(ngroups=5, Dimensions=2, Number=10^3)
+#plot
+res2<-SAGMMFit(sims$X, sims$Y, plot=T)
 ```
