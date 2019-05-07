@@ -57,8 +57,9 @@ double norm_HD(arma::rowvec y, arma::rowvec mu, arma::mat sigma)
 //'@param Groups Number of groups.
 //'@param MU_O Matrix of group means
 //'@param LAMBDA_O vector of lambda values. See Reference.
+//'@param PISTAR_O cube of pi*0 values. See Reference. 
+//'@param SIGMA cube of Sigma values. See Reference.
 //'@param GAMMA vector of gamma values.See Reference. 
-//'@param PISTAR_0 cube of pi*0 values. See Reference. 
 //'@return Results List
 //'PI - Group proportions.
 //'MU - Group means. 
@@ -69,9 +70,8 @@ double norm_HD(arma::rowvec y, arma::rowvec mu, arma::mat sigma)
 //'@references Nguyen & Jones (2018). Big Data-Appropriate Clustering via Stochastic Approximation and Gaussian Mixture Models. In Data Analytics (pp. 79-96). CRC Press.
 //'@export
 // [[Rcpp::export]]
-Rcpp::List main_loop(int Number, int Groups, arma::vec PISTAR_O, arma::mat MU_O, 
-                       arma::vec LAMBDA_O, arma::vec GAMMA, arma::mat& X,
-                       int Dimensions, arma::cube SIGMA){
+Rcpp::List main_loop(arma::mat& X, int Dimensions, int Number, int Groups, arma::mat MU_O, arma::vec LAMBDA_O,arma::vec PISTAR_O,  
+                     arma::cube SIGMA, arma::vec GAMMA){
     
     double LogLike =0.0;
     

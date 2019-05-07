@@ -123,9 +123,8 @@ SAGMMFit<-function(X, Y=NULL, Burnin=5, ngroups=5, kstart=10, plot=FALSE){
     MU_O <- MU # Old value of Mu
     PISTAR_O <- PISTAR # Old value of Pistar
   
-   
     #MAIN ACTION HERE
-    results<-main_loop(Number,ngroups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions, SIGMA_C)
+    results<-main_loop(X, Dimensions, Number, ngroups, MU_O, LAMBDA_O,PISTAR_O, SIGMA_C, GAMMA)
     
     TauMAT<-results$Tau
     PI <-results$PI
