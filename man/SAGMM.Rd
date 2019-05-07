@@ -6,10 +6,11 @@
 \alias{SAGMM-package}
 \title{SAGMM: A package for Clustering via Stochastic Approximation and Gaussian Mixture Models.}
 \description{
-The SAGMM package allows for computation
+The SAGMM package allows for computation of gaussian mixture models using stochastic approximation to increase efficiency with large data sets.
+The primary function \code{SAGMMFit} allows this to be performed in a relative flexible manner.
 }
 \references{
-Nguyen, H. D. & Jones, A. T. (2018). Big Data-appropriate clustering via stochastic approximation and Gaussian mixture models. In M. Ahmed & A.-S. K. Pathan (Eds.), Data Analytics:Concepts, Techniques, and Applications. Boca Raton: CRC Press.
+Nguyen & Jones (2018). Big Data-Appropriate Clustering via Stochastic Approximation and Gaussian Mixture Models. In Data Analytics (pp. 79-96). CRC Press.
 }
 \author{
 Andrew T. Jones and Hien D. Nguyen

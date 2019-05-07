@@ -15,10 +15,10 @@ Rcpp::NumericVector export_vec(arma::vec y)
 
 //'Mahalanobis Distance
 //'@description Calculates Mahalanobis distance between y and mu, scaled by sigma.
-//'@param y vector of length n
-//'@param mu vector of length n
-//'@param sigma nxn covariance matrix
-//'@return distance (scalar)
+//'@param y vector of length n.
+//'@param mu vector of length n.
+//'@param sigma nxn covariance matrix.
+//'@return Distance (scalar)
 //'@export
 // [[Rcpp::export]]
 double mahalanobis_HD(arma::rowvec y, arma::rowvec mu, arma::mat sigma)
@@ -32,10 +32,10 @@ double mahalanobis_HD(arma::rowvec y, arma::rowvec mu, arma::mat sigma)
 
 //'Euclidean Distance
 //'@description Calculates Euclidean distance between y and mu, scaled by sigma.
-//'@param y vector of length n
-//'@param mu vector of length n
-//'@param sigma nxn covariance matrix
-//'@return distance (scalar)
+//'@param y vector of length n.
+//'@param mu vector of length n.
+//'@param sigma nxn covariance matrix.
+//'@return distance (scalar).
 //'@export
 // [[Rcpp::export]]
 double norm_HD(arma::rowvec y, arma::rowvec mu, arma::mat sigma)
@@ -50,23 +50,23 @@ double norm_HD(arma::rowvec y, arma::rowvec mu, arma::mat sigma)
 }
 
 //'Main Computation Loop
-//'@description Performs primary compuation process
-//'@param Number int ???
-//'@param Groups int
-//'@param PISTAR_O  vector
-//'@param MU_O matrix
-//'@param LAMBDA_O  vector
-//'@param GAMMA vector
-//'@param X matrix
-//'@param Dimensions int
-//'@param SIGMA nxnx? cube
+//'@description Performs primary compuation process. See Reference.
+//'@param X Matrix of Observations
+//'@param Dimensions Dimension of observations.
+//'@param Number Number of observations.
+//'@param Groups Number of groups.
+//'@param MU_O Matrix of group means
+//'@param LAMBDA_O vector of lambda values. See Reference.
+//'@param GAMMA vector of gamma values.See Reference. 
+//'@param PISTAR cube of pi* values. See Reference. 
 //'@return Results List
-//'PI -
-//'MU -
-//'LAMBDA -
-//'Comps - 
-//'LogLike - 
-//'TauMat -
+//'PI - Group proportions.
+//'MU - Group means. 
+//'LAMBDA - Updated Lambda values.
+//'LogLike - Logliklihood value.
+//'TauMat - Conditional probabilities.
+//'@author Andrew T. Jones and Hien D. Nguyen
+//'@references Nguyen & Jones (2018). Big Data-Appropriate Clustering via Stochastic Approximation and Gaussian Mixture Models. In Data Analytics (pp. 79-96). CRC Press.
 //'@export
 // [[Rcpp::export]]
 Rcpp::List main_loop(int Number, int Groups, arma::vec PISTAR_O, arma::mat MU_O, 
@@ -152,7 +152,7 @@ Rcpp::List main_loop(int Number, int Groups, arma::vec PISTAR_O, arma::mat MU_O,
         Rcpp::Named("PI")= export_vec(PIvec),
         Rcpp::Named("MU")= (MU),
         Rcpp::Named("LAMBDA")= export_vec(LAMBDA),
-        Rcpp::Named("Comps")= export_vec(Comps),
+        //Rcpp::Named("Comps")= export_vec(Comps),
         Rcpp::Named("LogLike")= LogLike,
         Rcpp::Named("Tau")= TauMAT
         

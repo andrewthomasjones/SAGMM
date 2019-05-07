@@ -2,19 +2,19 @@
 % Please edit documentation in R/main.R
 \name{SAGMMFit}
 \alias{SAGMMFit}
-\title{Clustering via Stochastic Approximation and Gaussian Mixture Models}
+\title{Clustering via Stochastic Approximation and Gaussian Mixture Models (GMM)}
 \usage{
-SAGMMFit(X, Y = NULL, BURNIN = 5, Groups = 5, kstart = 10,
+SAGMMFit(X, Y = NULL, Burnin = 5, ngroups = 5, kstart = 10,
   plot = FALSE)
 }
 \arguments{
 \item{X}{numeric maxtrix of the data.}
 
-\item{Y}{Group membership (if known). Where groups are integers in 1:Groups. If provided Groups can}
+\item{Y}{Group membership (if known). Where groups are integers in 1:ngroups. If provided ngroups can}
 
-\item{BURNIN}{Ratio of observations to use as a burn in before algorithm begins.}
+\item{Burnin}{Ratio of observations to use as a burn in before algorithm begins.}
 
-\item{Groups}{Number of mixture components. If Y is provided, and groups is not then is overridden by Y.}
+\item{ngroups}{Number of mixture components. If Y is provided, and groups is not then is overridden by Y.}
 
 \item{kstart}{number of kmeans starts to initialise.}
 
@@ -24,20 +24,26 @@ SAGMMFit(X, Y = NULL, BURNIN = 5, Groups = 5, kstart = 10,
 A list containing
 \item{Cluster}{The clustering of each observation.}
 \item{plot}{A plot of the clustering (if requested).}
-\item{l2}{Lambda^2}
-\item{ARI1}{}
-\item{ARI2}{}
-\item{KM}{K-means clustering of the data.}
-\item{ARI3}{}
-\item{pi}{The cluster proportions}
-\item{tau}{Tau matrix.}
-\item{fit}{Output from C++ loop.}
+\item{l2}{Estimate of Lambda^2}
+\item{ARI1}{Adjusted Rand Index 1}
+\item{ARI2}{Adjusted Rand Index 2}
+\item{ARI3}{Adjusted Rand Index 3}
+\item{KM}{Initial K-means clustering of the data.}
+\item{pi}{The cluster proportions (vectyor of length ngroups)}
+\item{tau}{tau matrix of conditional probabilities.}
+\item{fit}{Full output details from inner C++ loop.}
 }
 \description{
-Fit a GMM with SA.
+Fit a GMM via Stochastic Approximation. See Reference.
 }
 \examples{
-sims<-generateSimData(Groups=10, Dimensions=10, Number=10^4)
+sims<-generateSimData(ngroups=10, Dimensions=10, Number=10^4)
 res1<-SAGMMFit(sims$X, sims$Y)
-res2<-SAGMMFit(sims$X, Groups=5)
+res2<-SAGMMFit(sims$X, ngroups=5)
+}
+\references{
+Nguyen & Jones (2018). Big Data-Appropriate Clustering via Stochastic Approximation and Gaussian Mixture Models. In Data Analytics (pp. 79-96). CRC Press.
+}
+\author{
+Andrew T. Jones and Hien D. Nguyen
 }

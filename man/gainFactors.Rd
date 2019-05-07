@@ -2,17 +2,17 @@
 % Please edit documentation in R/main.R
 \name{gainFactors}
 \alias{gainFactors}
-\title{Return GAMMA}
+\title{Return Gamma, a sequence of gain factors}
 \usage{
-gainFactors(Number, BURNIN)
+gainFactors(Number, Burnin)
 }
 \arguments{
 \item{Number}{Number of values required.}
 
-\item{BURNIN}{Number of 'burnin' values at the beginning of sequence}
+\item{Burnin}{Number of 'Burnin' values at the beginning of sequence.}
 }
 \value{
-GAMMA, a vector of gain factors
+Gamma, a vector of gain factors.
 }
 \description{
 Generate a series of gain factors.

@@ -2,12 +2,12 @@
 % Please edit documentation in R/main.R
 \name{generateSimData}
 \alias{generateSimData}
-\title{Data for simulations.}
+\title{Generate data for simulations to test the SAGMM package..}
 \usage{
-generateSimData(Groups = 5, Dimensions = 5, Number = 10^4)
+generateSimData(ngroups = 5, Dimensions = 5, Number = 10^4)
 }
 \arguments{
-\item{Groups}{Number of mixture components. Default 5.}
+\item{ngroups}{Number of mixture components. Default 5.}
 
 \item{Dimensions}{number of Dimensions. Default 5.}
 
@@ -17,10 +17,9 @@ generateSimData(Groups = 5, Dimensions = 5, Number = 10^4)
 List of results: X, Y, simobject.
 }
 \description{
-Wrapper for MixSim
+This function is primarily a conviennce wrapper for MixSim.
 }
 \examples{
-sims<-generateSimData(Groups=10, Dimensions=10, Number=10^4)
+sims<-generateSimData(ngroups=10, Dimensions=10, Number=10^4)
 sims<-generateSimData()
-
 }

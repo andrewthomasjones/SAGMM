@@ -8,33 +8,36 @@ main_loop(Number, Groups, PISTAR_O, MU_O, LAMBDA_O, GAMMA, X, Dimensions,
   SIGMA)
 }
 \arguments{
-\item{Number}{int ???}
+\item{Number}{Number of observations.}
 
-\item{Groups}{int}
+\item{Groups}{Number of groups.}
 
-\item{PISTAR_O}{vector}
+\item{MU_O}{Matrix of group means}
 
-\item{MU_O}{matrix}
+\item{LAMBDA_O}{vector of lambda values. See Reference.}
 
-\item{LAMBDA_O}{vector}
+\item{GAMMA}{vector of gamma values.See Reference.}
 
-\item{GAMMA}{vector}
+\item{X}{Matrix of Observations}
 
-\item{X}{matrix}
+\item{Dimensions}{Dimension of observations.}
 
-\item{Dimensions}{int}
-
-\item{SIGMA}{nxnx? cube}
+\item{PISTAR}{cube of pi* values. See Reference.}
 }
 \value{
 Results List
-PI -
-MU -
-LAMBDA -
-Comps - 
-LogLike - 
-TauMat -
+PI - Group proportions.
+MU - Group means. 
+LAMBDA - Updated Lambda values.
+LogLike - Logliklihood value.
+TauMat - Conditional probabilities.
 }
 \description{
-Performs primary compuation process
+Performs primary compuation process. See Reference.
+}
+\references{
+Nguyen & Jones (2018). Big Data-Appropriate Clustering via Stochastic Approximation and Gaussian Mixture Models. In Data Analytics (pp. 79-96). CRC Press.
+}
+\author{
+Andrew T. Jones and Hien D. Nguyen
 }

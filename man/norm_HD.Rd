@@ -7,14 +7,14 @@
 norm_HD(y, mu, sigma)
 }
 \arguments{
-\item{y}{vector of length n}
+\item{y}{vector of length n.}
 
-\item{mu}{vector of length n}
+\item{mu}{vector of length n.}
 
-\item{sigma}{nxn covariance matrix}
+\item{sigma}{nxn covariance matrix.}
 }
 \value{
-distance (scalar)
+distance (scalar).
 }
 \description{
 Calculates Euclidean distance between y and mu, scaled by sigma.

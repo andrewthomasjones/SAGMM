@@ -7,14 +7,14 @@
 mahalanobis_HD(y, mu, sigma)
 }
 \arguments{
-\item{y}{vector of length n}
+\item{y}{vector of length n.}
 
-\item{mu}{vector of length n}
+\item{mu}{vector of length n.}
 
-\item{sigma}{nxn covariance matrix}
+\item{sigma}{nxn covariance matrix.}
 }
 \value{
-distance (scalar)
+Distance (scalar)
 }
 \description{
 Calculates Mahalanobis distance between y and mu, scaled by sigma.

@@ -18,7 +18,7 @@ test_that("Test gainFactors", {
 
 test_that("Test generateSimData", {
     
-    result<-generateSimData(Groups=10, Dimensions=10, Number=10^2)
+    result<-generateSimData(ngroups=10, Dimensions=10, Number=10^2)
    
     #types correct
     expect_is(result, "list")
@@ -32,7 +32,7 @@ test_that("Test generateSimData", {
 })
 
 test_that("Test SAGMMFit", {
-    sims<-generateSimData(Groups=10, Dimensions=10, Number=10^3)
+    sims<-generateSimData(ngroups=10, Dimensions=10, Number=10^3)
     result<-SAGMMFit(sims$X, sims$Y)
     
     # #types correct
@@ -42,8 +42,8 @@ test_that("Test SAGMMFit", {
     expect_is(result[[3]], "numeric")
     expect_is(result[[4]], "numeric")
     expect_is(result[[5]], "numeric")
-    expect_is(result[[6]], "kmeans")
-    expect_is(result[[7]], "numeric")
+    expect_is(result[[7]], "kmeans")
+    expect_is(result[[6]], "numeric")
     expect_is(result[[8]], "numeric")
     expect_is(result[[9]], "matrix")
     expect_is(result[[10]], "list")
@@ -54,7 +54,7 @@ test_that("Test SAGMMFit", {
     #no missing
     expect_identical(result, na.omit(result))
     
-    result<-SAGMMFit(sims$X, Groups=5)
+    result<-SAGMMFit(sims$X, ngroups=5)
     # #types correct
     expect_is(result, "list")
     expect_is(result[[1]], "integer")
@@ -62,8 +62,8 @@ test_that("Test SAGMMFit", {
     expect_is(result[[3]], "numeric")
     expect_is(result[[4]], "logical")
     expect_is(result[[5]], "logical")
-    expect_is(result[[6]], "kmeans")
-    expect_is(result[[7]], "logical")
+    expect_is(result[[7]], "kmeans")
+    expect_is(result[[6]], "logical")
     expect_is(result[[8]], "numeric")
     expect_is(result[[9]], "matrix")
     expect_is(result[[10]], "list")
@@ -74,9 +74,9 @@ test_that("Test SAGMMFit", {
 })
 
 test_that("Test SAGMMFit Plots", {
-    sims<-generateSimData(Groups=5, Dimensions=2, Number=10^2)
+    sims<-generateSimData(ngroups=5, Dimensions=2, Number=10^2)
     result1<-SAGMMFit(sims$X, sims$Y, plot=TRUE)
-    result2<-SAGMMFit(sims$X, Groups=4, plot=TRUE)
+    result2<-SAGMMFit(sims$X, ngroups=4, plot=TRUE)
     
     #dims
     expect_is(result1, "list")
