@@ -17,7 +17,7 @@ generateSimData(ngroups = 5, Dimensions = 5, Number = 10^4)
 List of results: X, Y, simobject.
 }
 \description{
-This function is primarily a conviennce wrapper for MixSim.
+This function is primarily a convienence wrapper for MixSim.
 }
 \examples{
 sims<-generateSimData(ngroups=10, Dimensions=10, Number=10^4)

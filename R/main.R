@@ -29,7 +29,7 @@ gainFactors <- function(Number, Burnin) {
 
 #' Generate data for simulations to test the SAGMM package..
 #' 
-#' @description  This function is primarily a conviennce wrapper for MixSim.
+#' @description  This function is primarily a convienence wrapper for MixSim.
 #' @param ngroups Number of mixture components. Default 5.
 #' @param Dimensions number of Dimensions. Default 5.
 #' @param Number number of samples. Default 10^4.
@@ -53,7 +53,7 @@ generateSimData<-function(ngroups=5, Dimensions=5, Number=10^4){
 #' Clustering via Stochastic Approximation and Gaussian Mixture Models (GMM)
 #' 
 #' @description Fit a GMM via Stochastic Approximation. See Reference.
-#' @param X numeric maxtrix of the data.
+#' @param X numeric matrix of the data.
 #' @param Y Group membership (if known). Where groups are integers in 1:ngroups. If provided ngroups can 
 #' @param Burnin Ratio of observations to use as a burn in before algorithm begins.
 #' @param ngroups Number of mixture components. If Y is provided, and groups is not then is overridden by Y.
@@ -67,7 +67,7 @@ generateSimData<-function(ngroups=5, Dimensions=5, Number=10^4){
 #'\item{ARI2}{Adjusted Rand Index 2}
 #'\item{ARI3}{Adjusted Rand Index 3}
 #'\item{KM}{Initial K-means clustering of the data.}
-#'\item{pi}{The cluster proportions (vectyor of length ngroups)}
+#'\item{pi}{The cluster proportions (vector of length ngroups)}
 #'\item{tau}{tau matrix of conditional probabilities.}
 #'\item{fit}{Full output details from inner C++ loop.}
 #' @examples

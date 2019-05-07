@@ -8,7 +8,7 @@ SAGMMFit(X, Y = NULL, Burnin = 5, ngroups = 5, kstart = 10,
   plot = FALSE)
 }
 \arguments{
-\item{X}{numeric maxtrix of the data.}
+\item{X}{numeric matrix of the data.}
 
 \item{Y}{Group membership (if known). Where groups are integers in 1:ngroups. If provided ngroups can}
 
@@ -29,7 +29,7 @@ A list containing
 \item{ARI2}{Adjusted Rand Index 2}
 \item{ARI3}{Adjusted Rand Index 3}
 \item{KM}{Initial K-means clustering of the data.}
-\item{pi}{The cluster proportions (vectyor of length ngroups)}
+\item{pi}{The cluster proportions (vector of length ngroups)}
 \item{tau}{tau matrix of conditional probabilities.}
 \item{fit}{Full output details from inner C++ loop.}
 }
