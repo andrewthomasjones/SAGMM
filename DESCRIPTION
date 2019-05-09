@@ -5,7 +5,7 @@ Version: 0.2.3
 Date: 2019-05-07
 Author: Andrew T. Jones, Hien D. Nguyen
 Maintainer: Andrew T. Jones <andrewthomasjones@gmail.com>
-Description: Computes clustering  by fitting Gaussian Mixture Models (GMM) via Stochastic Approximation following the methods of Nguyen and Jones (2018) <doi:10.1201/9780429446177>.It also provides some test data generation and plotting functionality to assist with this process.
+Description: Computes clustering by fitting Gaussian mixture models (GMM) via stochastic approximation following the methods of Nguyen and Jones (2018) <doi:10.1201/9780429446177>. It also provides some test data generation and plotting functionality to assist with this process.
 License: GPL-3
 Encoding: UTF-8
 Imports: Rcpp (>= 0.12.13),
