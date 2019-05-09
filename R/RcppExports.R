@@ -5,48 +5,14 @@
 #'@useDynLib SAGMM
 NULL
 
-#'Mahalanobis Distance
-#'@description Calculates Mahalanobis distance between y and mu, scaled by sigma.
-#'@param y vector of length n.
-#'@param mu vector of length n.
-#'@param sigma nxn covariance matrix.
-#'@return Distance (scalar)
-#'@export
 mahalanobis_HD <- function(y, mu, sigma) {
     .Call('_SAGMM_mahalanobis_HD', PACKAGE = 'SAGMM', y, mu, sigma)
 }
 
-#'Euclidean Distance
-#'@description Calculates Euclidean distance between y and mu, scaled by sigma.
-#'@param y vector of length n.
-#'@param mu vector of length n.
-#'@param sigma nxn covariance matrix.
-#'@return distance (scalar).
-#'@export
 norm_HD <- function(y, mu, sigma) {
     .Call('_SAGMM_norm_HD', PACKAGE = 'SAGMM', y, mu, sigma)
 }
 
-#'Main Computation Loop
-#'@description Performs primary computation process. See Reference.
-#'@param X Matrix of Observations
-#'@param Dimensions Dimension of observations.
-#'@param Number Number of observations.
-#'@param Groups Number of groups.
-#'@param MU_O Matrix of group means
-#'@param LAMBDA_O vector of lambda values. See Reference.
-#'@param PISTAR_O cube of pi*0 values. See Reference. 
-#'@param SIGMA cube of Sigma values. See Reference.
-#'@param GAMMA vector of gamma values.See Reference. 
-#'@return Results List
-#'PI - Group proportions.
-#'MU - Group means. 
-#'LAMBDA - Updated Lambda values.
-#'LogLike - Logliklihood value.
-#'TauMat - Conditional probabilities.
-#'@author Andrew T. Jones and Hien D. Nguyen
-#'@references Nguyen & Jones (2018). Big Data-Appropriate Clustering via Stochastic Approximation and Gaussian Mixture Models. In Data Analytics (pp. 79-96). CRC Press.
-#'@export
 main_loop <- function(X, Dimensions, Number, Groups, MU_O, LAMBDA_O, PISTAR_O, SIGMA, GAMMA) {
     .Call('_SAGMM_main_loop', PACKAGE = 'SAGMM', X, Dimensions, Number, Groups, MU_O, LAMBDA_O, PISTAR_O, SIGMA, GAMMA)
 }

@@ -13,13 +13,7 @@ Rcpp::NumericVector export_vec(arma::vec y)
     return tmp;
 }
 
-//'Mahalanobis Distance
-//'@description Calculates Mahalanobis distance between y and mu, scaled by sigma.
-//'@param y vector of length n.
-//'@param mu vector of length n.
-//'@param sigma nxn covariance matrix.
-//'@return Distance (scalar)
-//'@export
+
 // [[Rcpp::export]]
 double mahalanobis_HD(arma::rowvec y, arma::rowvec mu, arma::mat sigma)
 {
@@ -30,13 +24,6 @@ double mahalanobis_HD(arma::rowvec y, arma::rowvec mu, arma::mat sigma)
     return delta;
 }
 
-//'Euclidean Distance
-//'@description Calculates Euclidean distance between y and mu, scaled by sigma.
-//'@param y vector of length n.
-//'@param mu vector of length n.
-//'@param sigma nxn covariance matrix.
-//'@return distance (scalar).
-//'@export
 // [[Rcpp::export]]
 double norm_HD(arma::rowvec y, arma::rowvec mu, arma::mat sigma)
 {
@@ -49,26 +36,6 @@ double norm_HD(arma::rowvec y, arma::rowvec mu, arma::mat sigma)
     return f;
 }
 
-//'Main Computation Loop
-//'@description Performs primary computation process. See Reference.
-//'@param X Matrix of Observations
-//'@param Dimensions Dimension of observations.
-//'@param Number Number of observations.
-//'@param Groups Number of groups.
-//'@param MU_O Matrix of group means
-//'@param LAMBDA_O vector of lambda values. See Reference.
-//'@param PISTAR_O cube of pi*0 values. See Reference. 
-//'@param SIGMA cube of Sigma values. See Reference.
-//'@param GAMMA vector of gamma values.See Reference. 
-//'@return Results List
-//'PI - Group proportions.
-//'MU - Group means. 
-//'LAMBDA - Updated Lambda values.
-//'LogLike - Logliklihood value.
-//'TauMat - Conditional probabilities.
-//'@author Andrew T. Jones and Hien D. Nguyen
-//'@references Nguyen & Jones (2018). Big Data-Appropriate Clustering via Stochastic Approximation and Gaussian Mixture Models. In Data Analytics (pp. 79-96). CRC Press.
-//'@export
 // [[Rcpp::export]]
 Rcpp::List main_loop(arma::mat& X, int Dimensions, int Number, int Groups, arma::mat MU_O, arma::vec LAMBDA_O,arma::vec PISTAR_O,  
                      arma::cube SIGMA, arma::vec GAMMA){
