@@ -4,6 +4,7 @@
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/SAGMM)](https://cran.r-project.org/package=SAGMM)
 [![Travis-CI Build
 Status](https://travis-ci.org/andrewthomasjones/SAGMM.svg?branch=master)](https://travis-ci.org/andrewthomasjones/SAGMM)
+[![DOI](https://zenodo.org/badge/111875243.svg)](https://zenodo.org/badge/latestdoi/111875243)
 
 # SAGMM
 
