@@ -8,7 +8,7 @@
 #'@name SAGMM
 NULL
 
-#' @import stats MixSim mvtnorm mclust lowmemtkmeans
+#' @import stats MixSim mclust lowmemtkmeans
 NULL
 
 #' Return Gamma, a sequence of gain factors

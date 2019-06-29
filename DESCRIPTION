@@ -1,7 +1,7 @@
 Package: SAGMM
 Type: Package
 Title: Clustering via Stochastic Approximation and Gaussian Mixture Models
-Version: 0.2.3
+Version: 0.2.4
 Date: 2019-05-07
 Author: Andrew T. Jones, Hien D. Nguyen
 Maintainer: Andrew T. Jones <andrewthomasjones@gmail.com>
@@ -10,7 +10,6 @@ License: GPL-3
 Encoding: UTF-8
 Imports: Rcpp (>= 0.12.13),
     MixSim,
-    mvtnorm,
     mclust,
     stats,
     lowmemtkmeans
