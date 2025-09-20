@@ -2,7 +2,7 @@
 // [[Rcpp::plugins(cpp11)]]   
 
 //'@importFrom Rcpp sourceCpp
-//'@useDynLib SAGMM
+//'@useDynLib SAGMM, .registration=TRUE
 
 #include "RcppArmadillo.h"
 
