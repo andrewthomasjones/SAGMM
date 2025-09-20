@@ -1,16 +1,13 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/SAGMM)](https://cran.r-project.org/package=SAGMM)
-[![Travis-CI Build
-Status](https://travis-ci.org/andrewthomasjones/SAGMM.svg?branch=master)](https://travis-ci.org/andrewthomasjones/SAGMM)
-[![DOI](https://zenodo.org/badge/111875243.svg)](https://zenodo.org/badge/latestdoi/111875243)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/SAGMM)](https://cran.r-project.org/package=SAGMM)
 
 # SAGMM
 
 The SAGMM package allows for computation of gaussian mixture models
 using stochastic approximation to increase efficiency with large data
-sets. The primary function  allows this to be performed in a relative
+sets. The primary function allows this to be performed in a relative
 flexible manner.
 
 ## Installation
@@ -34,11 +31,11 @@ sims<-generateSimData(ngroups=10, Dimensions=10, Number=10^5)
 #time fit
 ptm <- proc.time()
 res1<-SAGMMFit(sims$X, ngroups=10)
-#> Warning: did not converge in 10 iterations
 #> Warning: Quick-TRANSfer stage steps exceeded maximum (= 5000000)
+#> Warning: did not converge in 10 iterations
 proc.time()-ptm #should be under 15 seconds for 10 x 10^5 dataset on an ordinary laptop
 #>    user  system elapsed 
-#>  15.623   0.338  19.157
+#>   5.065   0.065   5.211
 ```
 
 ``` r
