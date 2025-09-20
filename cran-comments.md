@@ -1,11 +1,12 @@
 ## Test environments
-* local OS X install, R 3.6.6
-* ubuntu 14.04 (on travis-ci), R 3.6.6
-* win-builder (devel and release)
+* macos-13 on GitHub, R-* via rhub
+* windows-latest on GitHub, R-* via rhub
+* ubuntu-latest on GitHub, R-* via rhub
 
 ## R CMD check results
+There were no ERRORs or WARNINGs. 
 
-0 errors | 0 warnings | 0 notes
+There were no NOTEs.
 
 ## Reverse dependencies
 There are no reverse dependencies.

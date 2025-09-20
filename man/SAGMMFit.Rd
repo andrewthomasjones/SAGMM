@@ -4,8 +4,7 @@
 \alias{SAGMMFit}
 \title{Clustering via Stochastic Approximation and Gaussian Mixture Models (GMM)}
 \usage{
-SAGMMFit(X, Y = NULL, Burnin = 5, ngroups = 5, kstart = 10,
-  plot = FALSE)
+SAGMMFit(X, Y = NULL, Burnin = 5, ngroups = 5, kstart = 10, plot = FALSE)
 }
 \arguments{
 \item{X}{numeric matrix of the data.}

@@ -2,8 +2,8 @@
 % Please edit documentation in R/main.R
 \docType{package}
 \name{SAGMM}
-\alias{SAGMM}
 \alias{SAGMM-package}
+\alias{SAGMM}
 \title{SAGMM: A package for Clustering via Stochastic Approximation and Gaussian Mixture Models.}
 \description{
 The SAGMM package allows for computation of gaussian mixture models using stochastic approximation to increase efficiency with large data sets.
