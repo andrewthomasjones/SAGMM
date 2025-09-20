@@ -4,8 +4,8 @@
 #'The primary function \code{SAGMMFit} allows this to be performed in a relative flexible manner.
 #'@author Andrew T. Jones and Hien D. Nguyen
 #'@references Nguyen & Jones (2018). Big Data-Appropriate Clustering via Stochastic Approximation and Gaussian Mixture Models. In Data Analytics (pp. 79-96). CRC Press.
-#'@docType package
 #'@name SAGMM
+"_PACKAGE"
 NULL
 
 #' @import stats MixSim mclust lowmemtkmeans
@@ -83,14 +83,14 @@ SAGMMFit<-function(X, Y=NULL, Burnin=5, ngroups=5, kstart=10, plot=FALSE){
     Dimensions <-ncol(X) #dim of data
     
     if(length(Y)>0){
-      if(ngroups==0 |class(ngroups)!="numeric"){
+      if(ngroups==0 | !inherits(ngroups, "numeric")){
         stop("At least one of ngroups or Y must be provided")
       }
       if(length(Y)!=nrow(X)){
         stop("Y length is not equal number of rows of X.")
       }
     }else{
-      if(ngroups==0 |class(ngroups)!="numeric"){
+      if(ngroups==0 |!inherits(ngroups, "numeric")){
         ngroups <- max(Y)
       }
     }
